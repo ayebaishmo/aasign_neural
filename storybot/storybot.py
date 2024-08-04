@@ -4,10 +4,9 @@ model, tokenizer = load_model("C:/Users/ISHMO_CT/Downloads/Bloomtech/aasign_neur
 
 class StoryBot:
     # constructor "automatically called when the class object is created"
-    def __init__(self, model, tokenizer, max_lenght=1000):
+    def __init__(self, model, tokenizer):
         self.model = model
         self.tokenizer = tokenizer
-        self.max_length = max_lenght
     
     def __call__(self, user_prompt: str) -> str:
         # The __call__ is pecial method taht allows an instance of the 
@@ -16,7 +15,7 @@ class StoryBot:
 
         output = self.model.generate(
             input_ids,
-            max_length=self.max_length,
+            max_length=10000,
             num_return_sequences=1,
             no_repeat_ngram_size=2,
             early_stopping=True,
